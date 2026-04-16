@@ -110,7 +110,7 @@ theme: butterfly
 
 deploy:
   - type: git
-    repository: https://github.com/PaceMak1/wenzhihao.github.io.git
+    repository: https://github.com/PaceMak1/wenzhihao.git
     branch: master
   
   # 音乐播放器  
