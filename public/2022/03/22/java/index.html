@@ -1,0 +1,451 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Java基础 | 小温の博客</title><meta name="author" content="温志浩,1921275125@qq.com"><meta name="copyright" content="温志浩"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="对于学习Java的一些知识笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础">
+<meta property="og:url" content="http://47.106.92.181/2022/03/22/java/index.html">
+<meta property="og:site_name" content="小温の博客">
+<meta property="og:description" content="对于学习Java的一些知识笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6564c775c458853aef89fa78.jpg">
+<meta property="article:published_time" content="2022-03-22T05:42:21.000Z">
+<meta property="article:modified_time" content="2026-04-15T02:49:01.720Z">
+<meta property="article:author" content="温志浩">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="IO流">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/6564c775c458853aef89fa78.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Java基础",
+  "url": "http://47.106.92.181/2022/03/22/java/",
+  "image": "https://pic.imgdb.cn/item/6564c775c458853aef89fa78.jpg",
+  "datePublished": "2022-03-22T05:42:21.000Z",
+  "dateModified": "2026-04-15T02:49:01.720Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "温志浩",
+      "url": "http://47.106.92.181"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/newFavicon.png"><link rel="canonical" href="http://47.106.92.181/2022/03/22/java/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java基础',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><!-- hexo injector head_end start -->
+    <link rel="stylesheet" href="/css/gallery.css" media="print" onload="this.media='all'">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (true) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/656fda49c458853aef37c2b3.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photo/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(https://pic.imgdb.cn/item/6564c775c458853aef89fa78.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">小温の博客</span></a><a class="nav-page-title" href="/"><span class="site-name">Java基础</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photo/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Java基础</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-22T05:42:21.000Z" title="发表于 2022-03-22 13:42:21">2022-03-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-04-15T02:49:01.720Z" title="更新于 2026-04-15 10:49:01">2026-04-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="八大基本类型"><a href="#八大基本类型" class="headerlink" title="八大基本类型"></a>八大基本类型</h1><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/656156bfc458853aef59bc3d.jpg" alt=""></p>
+<h2 id="1-自动类型提升-当容量小的数据类型的变量与容量大的数据类型的变量做运算时，结果自动提升为容量大的数据类型。"><a href="#1-自动类型提升-当容量小的数据类型的变量与容量大的数据类型的变量做运算时，结果自动提升为容量大的数据类型。" class="headerlink" title="1.自动类型提升:当容量小的数据类型的变量与容量大的数据类型的变量做运算时，结果自动提升为容量大的数据类型。"></a>1.自动类型提升:当容量小的数据类型的变量与容量大的数据类型的变量做运算时，结果自动提升为容量大的数据类型。</h2><p>byte、short、char—&gt;int—&gt;long—&gt;float—&gt;double</p>
+<h3 id="特别的：当byte、char、short三种类型的变量做运算时，结果为int型"><a href="#特别的：当byte、char、short三种类型的变量做运算时，结果为int型" class="headerlink" title="特别的：当byte、char、short三种类型的变量做运算时，结果为int型"></a>特别的：当byte、char、short三种类型的变量做运算时，结果为int型</h3><p>说明：此时的容量大小指的是，表示数的范围的大和小。int(-2^31~2^31-1)  &gt; short(-2^7~2^7-1)</p>
+<h2 id="2-强制类型转换-自动类型转换的逆运算。"><a href="#2-强制类型转换-自动类型转换的逆运算。" class="headerlink" title="2.强制类型转换:自动类型转换的逆运算。"></a>2.强制类型转换:自动类型转换的逆运算。</h2><p>1.需要使用强制转换符()</p>
+<p>2.注意点：强制类型转换，可能导致精度损失。   SSS</p>
+<h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><h2 id="1-面向过程和面向对象的区别"><a href="#1-面向过程和面向对象的区别" class="headerlink" title="1.面向过程和面向对象的区别"></a>1.面向过程和面向对象的区别</h2><p>面向过程：强调的是功能行为，以函数为最小单位，考虑怎么做。</p>
+<p>面向对象：强调具备了功能的对象，以类/对象为最小单位，考虑谁来做。</p>
+<p>例子：一个公司从小发展到大公司的过程(面向过程——&gt;面向对象)</p>
+<h2 id="2-类（Class）和对象（Object）"><a href="#2-类（Class）和对象（Object）" class="headerlink" title="2.类（Class）和对象（Object）"></a>2.类（Class）和对象（Object）</h2><p>类是对一类事物的描述，是<strong>抽象的</strong>、概念上的定义。例如：人类</p>
+<p>对象是<strong>实际存在的</strong>该类事物的每个个体，因而也称为实例。例如：温志浩</p>
+<h2 id="3-类中常见的成员有："><a href="#3-类中常见的成员有：" class="headerlink" title="3.类中常见的成员有："></a>3.类中常见的成员有：</h2><p>属性（field）：对应类中的<strong>成员变量</strong>。</p>
+<p>方法（method）：对应类中的<strong>成员方法</strong>。</p>
+<p>构造器（constructor）    作用：创建对象、初始化对象信息。</p>
+<p>……….</p>
+<h2 id="4-面向对象特征："><a href="#4-面向对象特征：" class="headerlink" title="4.面向对象特征："></a>4.面向对象特征：</h2><p>问题的引入：当我们创建一个对象以后，可以通过对象.属性的方式进行赋值。例如：我们给人类的对象的年龄属性进行赋值的时候，需要加入年龄不能小于0的条件，即要添加约束的条件。我们无法在属性的声明时期直接进行添加约束条件，所以引入封装。</p>
+<h3 id="封装性的体现：（封装性是一个很广的概念，以下每一种都是封装性的体现）"><a href="#封装性的体现：（封装性是一个很广的概念，以下每一种都是封装性的体现）" class="headerlink" title="封装性的体现：（封装性是一个很广的概念，以下每一种都是封装性的体现）"></a>封装性的体现：（封装性是一个很广的概念，以下每一种都是封装性的体现）</h3><ol>
+<li>我们将类的属性私有化(private)，同时提供公共的(public方法来获取(get)和设置(set)  </li>
+<li>不对外暴露的私有的方法。</li>
+<li>单例模式</li>
+<li>……</li>
+</ol>
+<p>问题的引入：当我们创建出了一个银行卡对象的时候，银行卡可以分为储蓄卡、信用卡。但是它们的属性和方法有很多是相同的，那么我们就要在分别的各自的类中又写一样的属性和方法。在增加一种卡型的时候也要再写一遍相同的属性和方法。代码的复用性太低。所以我们引入继承。</p>
+<h3 id="继承性：从已有的类中派生出新的类，新的类能吸收已有类的数据属性和行为，并能扩展新的能力。"><a href="#继承性：从已有的类中派生出新的类，新的类能吸收已有类的数据属性和行为，并能扩展新的能力。" class="headerlink" title="继承性：从已有的类中派生出新的类，新的类能吸收已有类的数据属性和行为，并能扩展新的能力。"></a>继承性：从已有的类中派生出新的类，新的类能吸收已有类的数据属性和行为，并能扩展新的能力。</h3><ol>
+<li>一旦子类A继承父类B以后，子类A中获取了父类B中的所有的属性和方法。就算父类中是private的属性和方法，子类继承父类以后，仍然认为获取了父类中私有的结构。只有因为封装性的影响，导致子类不能直接调用父类的结构而已。</li>
+<li>子类继承父类以后，还可以声明自己特有的方法或属性，实现功能的扩展。</li>
+</ol>
+<h3 id="多态性：对象的多态性：父类的引用指向子类型的对象-Person-p-new-Man-当我们new对象的时候，前面是父类，后面可以是子类。"><a href="#多态性：对象的多态性：父类的引用指向子类型的对象-Person-p-new-Man-当我们new对象的时候，前面是父类，后面可以是子类。" class="headerlink" title="多态性：对象的多态性：父类的引用指向子类型的对象(Person p=new Man();)当我们new对象的时候，前面是父类，后面可以是子类。"></a>多态性：对象的多态性：父类的引用指向子类型的对象(Person p=new Man();)当我们new对象的时候，前面是父类，后面可以是子类。</h3><ol>
+<li>多态的使用：当调用子父类同名的参数方法时，<strong>实际执行的是子类重写父类的方法</strong>。（我们在编译期，只能调用父类中声明的方法，但在运行期，我们执行的是子类重写父类的方法。总结：编译，看左边；运行，看右边。）</li>
+<li>多态使用的前提：1.类的继承关系   2.方法重写（如果你子类中不重写父类的方法，那么不如直接new 父类）<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/6561543ac458853aef526649.jpg" alt=""><br>若我们没有多态性，那么这个方法中需要的是Animal类，那么就只能放animal的对象进去。当我们想放猫的时候，又要在写一个需要的是Cat类的方法，需要的是Dog类又要另外写一个方法。这也就是多态的优点。<br>3.对象的多态性，只适用于方法，不适用于属性。（编译期和运行期都看左边）</li>
+</ol>
+<h2 id="抽象类：随着继承层次中一个个新子类的定义，子类变得越来越具体，而父类则更一般，更通用。慢慢的这个类就不在用来实例化了。"><a href="#抽象类：随着继承层次中一个个新子类的定义，子类变得越来越具体，而父类则更一般，更通用。慢慢的这个类就不在用来实例化了。" class="headerlink" title="抽象类：随着继承层次中一个个新子类的定义，子类变得越来越具体，而父类则更一般，更通用。慢慢的这个类就不在用来实例化了。"></a>抽象类：随着继承层次中一个个新子类的定义，子类变得越来越具体，而父类则更一般，更通用。慢慢的这个类就不在用来实例化了。</h2><p>例子：一个公司从小规模的时候老板做很多事情，后来公司变大了，老板慢慢就做的事情少了。此时老板就是抽象类。</p>
+<ol>
+<li>abstract：抽象的</li>
+<li>abstract可以用来修饰类和方法</li>
+<li>abstract修饰的类：<strong>抽象类</strong><ol>
+<li>此类不能实例化</li>
+<li>抽象类中一定有构造器（虽然自己以及不能new对象了，但是子类在new对象的时候，必须通过父类的构造器）</li>
+<li>必须提供抽象类的子类，让子类对象实例化。（不然抽象类本来就不能造对象，还没有子类。这用来干嘛呢？</li>
+</ol>
+</li>
+<li>abstract修饰方法：<strong>抽象方法</strong><ol>
+<li>抽象放只有方法的声明，没有方法体。（参考接口）</li>
+<li>包含抽象方法的类必须是抽象类。但抽象类中可以没有抽象方法。</li>
+<li>若子类不为抽象类，那么就必须重写所有父类（无论直接、间接父类）中的抽象方法。</li>
+</ol>
+</li>
+</ol>
+<p>问题引入：在Java中，只能够单继承，那么能实现的功能就变得很少，比如：篮球运动员和足球运动员都有了运动员继承了运动员这个父类。语文课代表和数学课代表都继承了班委这个父类。但是它们又还有学生这个类，那我们又不能进行继承。所以引入接口概念。接口可以多实现。<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/656154d8c458853aef5444b4.jpg" alt=""></p>
+<h2 id="接口："><a href="#接口：" class="headerlink" title="接口："></a>接口：</h2><ol>
+<li>接口使用interface来定义</li>
+<li>接口中有：全局常量、抽象方法</li>
+<li>接口中不能定义构造器的</li>
+<li>实现类要实现接口中的所有方法。</li>
+<li>重写和实现：对接口或抽象类中中有方法体的方法叫重写，对没有方法体的方法叫实现</li>
+<li>可以多实现—》弥补了单继承的局限</li>
+</ol>
+<h3 id="接口和抽象类的对比："><a href="#接口和抽象类的对比：" class="headerlink" title="接口和抽象类的对比："></a>接口和抽象类的对比：</h3><p>相似点：</p>
+<ol>
+<li>接口和抽象类都不能被实例化。</li>
+<li>接口和抽象类都可以包含抽象方法</li>
+</ol>
+<p>不同点：</p>
+<ol>
+<li>接口里<strong>只能包含抽象方法</strong>，抽象类则可以包含<strong>普通方法</strong></li>
+<li>抽象类中的成员变量可以是各种类型的，接口中的成员变量只能常量</li>
+<li>接口不能包含构造器，抽象类可以包含<strong>构造器</strong></li>
+<li><strong>一个类只能继承一个抽象类，而一个类却可以实现多个接口。</strong></li>
+</ol>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><h3 id="程序：一段静态的代码"><a href="#程序：一段静态的代码" class="headerlink" title="程序：一段静态的代码"></a>程序：一段静态的代码</h3><h3 id="进程：正在运行的一个程序。是一个动态的过程。"><a href="#进程：正在运行的一个程序。是一个动态的过程。" class="headerlink" title="进程：正在运行的一个程序。是一个动态的过程。"></a>进程：正在运行的一个程序。是一个动态的过程。</h3><p>系统在运行时会为每个进程分配不同的内存区域。</p>
+<h3 id="线程：进程可以进一步细分为线程，是一个程序内部的一条执行路径。"><a href="#线程：进程可以进一步细分为线程，是一个程序内部的一条执行路径。" class="headerlink" title="线程：进程可以进一步细分为线程，是一个程序内部的一条执行路径。"></a>线程：进程可以进一步细分为线程，是一个程序内部的一条执行路径。</h3><p>每个线程拥有独立的运行栈和和程序计数器。<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/6561555bc458853aef55bad2.jpg" alt=""></p>
+<h3 id="多线程的创建："><a href="#多线程的创建：" class="headerlink" title="多线程的创建："></a>多线程的创建：</h3><ol>
+<li>继承Thread类<ol>
+<li>创建一个继承于Thread类的子类</li>
+<li>重写Thread类的run()</li>
+<li>创建Thread类的<strong>子类对象</strong></li>
+<li>通过此对象调用start()</li>
+</ol>
+</li>
+<li>实现Runnable接口<ol>
+<li>创建一个实现了Runnable接口的类</li>
+<li>实现类去实现Runnable中的抽象方法：run()</li>
+<li>创建实现类的对象</li>
+<li><strong>将此对象作为参数传递到Thread类的构造器中，创建Thread类的对象。</strong>(这个和继承的方式不同)</li>
+<li>通过Thread类的对象调用start()</li>
+</ol>
+</li>
+<li>实现Callable<ol>
+<li>最大的区别，runnable没有返回值，而实现callable接口的任务线程能返回执行结果</li>
+<li>callable接口实现类中的run方法允许异常向上抛出，可以在内部处理，try catch，但是runnable接口实现类中run方法的异常必须在内部处理，不能抛出</li>
+</ol>
+</li>
+</ol>
+<h3 id="线程的生命周期："><a href="#线程的生命周期：" class="headerlink" title="线程的生命周期："></a>线程的生命周期：</h3><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65615579c458853aef560fb5.jpg" alt=""></p>
+<h2 id="类加载器："><a href="#类加载器：" class="headerlink" title="类加载器："></a>类加载器：</h2><p>bootstrap ClassLoader（启动类加载器）是ExtClassLoader的父类加载器，负责加载核心类库</p>
+<p>ExtClassLoader（扩展类加载器）是AppClassLoader的父类加载器，负责加载ext文件夹在的类库</p>
+<p>AppClassLoader(系统类加载器)是负责加载classpath下的类文件。</p>
+<h2 id="双亲委派"><a href="#双亲委派" class="headerlink" title="双亲委派:"></a>双亲委派:</h2><p>如果一个类加载器收到了类加载请求，它并不会自己先去加载，而是把这个请求委托给父类的加载器去执行，如果父类加载器还存在其父类加载器，则进一步向上委托，依次递归，请求最终将到达顶层的启动类加载器，如果父类加载器可以完成类加载任务，就成功返回，倘若父类加载器无法完成此加载任务，子加载器才会尝试自己去加载，这就是双亲委派模式，即每个儿子都很懒，每次有活就丢给父亲去干，直到父亲说这件事我也干不了时，儿子自己想办法去完成。<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/6561558cc458853aef5649d9.jpg" alt=""></p>
+<h2 id="String的使用："><a href="#String的使用：" class="headerlink" title="String的使用："></a>String的使用：</h2><ol>
+<li><strong>String类上声明为final的</strong>，不可被继承。</li>
+<li>String实现了Serializable接口：表示字符串是支持序列化的。</li>
+<li>实现了Comparable接口：表示String可以比较大小。</li>
+<li>String内部定义了final char[] value用于存储字符串数据</li>
+<li>String：代表<strong>不可变的字符序列</strong>。简称：不可变性<pre><code>5.1 当对字符串重新赋值时，需要在字符串常量池中创建一个新的区域，不能使用原有的value进行赋值。
+5.2 当对现有的字符串进行连接操作时，也需要重新指定内存区域，不能使用原有的value进行赋值。
+5.3 当调用String的replace()方法进行修改指定字符或字符串时，也需要重新指定内存区域，不能使用原有的value进行赋值。
+</code></pre></li>
+<li>通过<strong>字面量的方式</strong>（String s=”abc”，和new是不同的）给一个字符串赋值，此时的字符串值是声明在<strong>字符串常量池</strong>中。</li>
+<li><strong>字符串常量池</strong>中是不会存储相同内容的字符串的。(参考Map的Key值)</li>
+<li>通过字面量定义的方式：数据是存放在方法区中的<strong>字符串常量池</strong>。通过new+构造器的方式：数据是存放在<strong>堆空间中</strong>。</li>
+</ol>
+<h2 id="IO流："><a href="#IO流：" class="headerlink" title="IO流："></a>IO流：</h2><h3 id="分类："><a href="#分类：" class="headerlink" title="分类："></a>分类：</h3><ol>
+<li>按操作数据单位不同分为：字节流，字符流</li>
+<li>按数据流的流向不同分为：输入流、输出流</li>
+<li>按流的角色的不同分为：节点流（或文件流，因为可以直接操作文件，其它流都不能直接操作文件），处理流<br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/656155fec458853aef578b1b.jpg" alt=""><h3 id="IO流体系："><a href="#IO流体系：" class="headerlink" title="IO流体系："></a>IO流体系：</h3><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65615615c458853aef57cd8b.jpg" alt=""></li>
+</ol>
+<h2 id="网络通信协议："><a href="#网络通信协议：" class="headerlink" title="网络通信协议："></a>网络通信协议：</h2><p>传输层中两个重要的协议：<strong>TCP</strong>(Transmission Control Protocol)传输控制协议/<strong>UDP</strong>(User Datagram Protocol)用户数据报协议。</p>
+<p>TCP协议：</p>
+<ul>
+<li>使用TCP协议前，必须建立TCP连接，形成传输数据通道</li>
+<li>传输前，采用“三次握手”方式，点对点通信，<strong>是可靠的</strong></li>
+<li>TCP协议进行通信的两个应用进程：客户端、服务端</li>
+<li>在连接中可进行<strong>大数据量的传输</strong></li>
+<li>传输完毕，需释放<strong>已建立的连接，效率低</strong></li>
+</ul>
+<p>UDP协议：</p>
+<ul>
+<li>将数据封装成数据包，<strong>不需要建立连接</strong></li>
+<li>每个数据报的大小限制在64k内</li>
+<li>发送不管对方是否准备好，接收方收到也不确认，故是不可靠的</li>
+<li>可以广播发送</li>
+<li>发送数据结束时<strong>无需释放资源，开销小，速度快</strong></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://47.106.92.181">温志浩</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://47.106.92.181/2022/03/22/java/">http://47.106.92.181/2022/03/22/java/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://47.106.92.181" target="_blank">小温の博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a><a class="post-meta__tags" href="/tags/IO%E6%B5%81/">IO流</a></div><div class="post-share"><div class="social-share" data-image="https://pic.imgdb.cn/item/6564c775c458853aef89fa78.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2022/04/05/stream/" title="stream流"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65674069c458853aef243189.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">stream流</div></div><div class="info-2"><div class="info-item-1">Java8的Stream使用的是函数式编程模式，如同它的名字一样，它可以被用来对集合或数组进行链状流式的操作。可以更方便的让我们对集合或数组操作。</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/656fda49c458853aef37c2b3.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">温志浩</div><div class="author-info-description">努力努力再努力</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/PaceMak1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/PaceMak1" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:wenzhihao@live.cn" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #24292e;"></i></a><a class="social-icon" href="https://qm.qq.com/q/aMq3qW7Cne" target="_blank" title="QQ"><i class="fab fa-qq" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/27262065?spm_id_from=333.1007.0.0" target="_blank" title="B站"><i class="fab fa-bilibili" style="color: #24292e;"></i></a><a class="social-icon" href="https://weibo.com/u/5611015247" target="_blank" title="Weibo"><i class="fab fa-weibo" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎您的到来，随意参观</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB%E5%A4%A7%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">八大基本类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%87%AA%E5%8A%A8%E7%B1%BB%E5%9E%8B%E6%8F%90%E5%8D%87-%E5%BD%93%E5%AE%B9%E9%87%8F%E5%B0%8F%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%98%E9%87%8F%E4%B8%8E%E5%AE%B9%E9%87%8F%E5%A4%A7%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%98%E9%87%8F%E5%81%9A%E8%BF%90%E7%AE%97%E6%97%B6%EF%BC%8C%E7%BB%93%E6%9E%9C%E8%87%AA%E5%8A%A8%E6%8F%90%E5%8D%87%E4%B8%BA%E5%AE%B9%E9%87%8F%E5%A4%A7%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E3%80%82"><span class="toc-number">1.1.</span> <span class="toc-text">1.自动类型提升:当容量小的数据类型的变量与容量大的数据类型的变量做运算时，结果自动提升为容量大的数据类型。</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E5%88%AB%E7%9A%84%EF%BC%9A%E5%BD%93byte%E3%80%81char%E3%80%81short%E4%B8%89%E7%A7%8D%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%98%E9%87%8F%E5%81%9A%E8%BF%90%E7%AE%97%E6%97%B6%EF%BC%8C%E7%BB%93%E6%9E%9C%E4%B8%BAint%E5%9E%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">特别的：当byte、char、short三种类型的变量做运算时，结果为int型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E8%87%AA%E5%8A%A8%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E7%9A%84%E9%80%86%E8%BF%90%E7%AE%97%E3%80%82"><span class="toc-number">1.2.</span> <span class="toc-text">2.强制类型转换:自动类型转换的逆运算。</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.</span> <span class="toc-text">面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E5%92%8C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.1.</span> <span class="toc-text">1.面向过程和面向对象的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%B1%BB%EF%BC%88Class%EF%BC%89%E5%92%8C%E5%AF%B9%E8%B1%A1%EF%BC%88Object%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">2.类（Class）和对象（Object）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%B1%BB%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E6%88%90%E5%91%98%E6%9C%89%EF%BC%9A"><span class="toc-number">2.3.</span> <span class="toc-text">3.类中常见的成员有：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%EF%BC%9A"><span class="toc-number">2.4.</span> <span class="toc-text">4.面向对象特征：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%81%E8%A3%85%E6%80%A7%E7%9A%84%E4%BD%93%E7%8E%B0%EF%BC%9A%EF%BC%88%E5%B0%81%E8%A3%85%E6%80%A7%E6%98%AF%E4%B8%80%E4%B8%AA%E5%BE%88%E5%B9%BF%E7%9A%84%E6%A6%82%E5%BF%B5%EF%BC%8C%E4%BB%A5%E4%B8%8B%E6%AF%8F%E4%B8%80%E7%A7%8D%E9%83%BD%E6%98%AF%E5%B0%81%E8%A3%85%E6%80%A7%E7%9A%84%E4%BD%93%E7%8E%B0%EF%BC%89"><span class="toc-number">2.4.1.</span> <span class="toc-text">封装性的体现：（封装性是一个很广的概念，以下每一种都是封装性的体现）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF%E6%80%A7%EF%BC%9A%E4%BB%8E%E5%B7%B2%E6%9C%89%E7%9A%84%E7%B1%BB%E4%B8%AD%E6%B4%BE%E7%94%9F%E5%87%BA%E6%96%B0%E7%9A%84%E7%B1%BB%EF%BC%8C%E6%96%B0%E7%9A%84%E7%B1%BB%E8%83%BD%E5%90%B8%E6%94%B6%E5%B7%B2%E6%9C%89%E7%B1%BB%E7%9A%84%E6%95%B0%E6%8D%AE%E5%B1%9E%E6%80%A7%E5%92%8C%E8%A1%8C%E4%B8%BA%EF%BC%8C%E5%B9%B6%E8%83%BD%E6%89%A9%E5%B1%95%E6%96%B0%E7%9A%84%E8%83%BD%E5%8A%9B%E3%80%82"><span class="toc-number">2.4.2.</span> <span class="toc-text">继承性：从已有的类中派生出新的类，新的类能吸收已有类的数据属性和行为，并能扩展新的能力。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%80%81%E6%80%A7%EF%BC%9A%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%A4%9A%E6%80%81%E6%80%A7%EF%BC%9A%E7%88%B6%E7%B1%BB%E7%9A%84%E5%BC%95%E7%94%A8%E6%8C%87%E5%90%91%E5%AD%90%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AF%B9%E8%B1%A1-Person-p-new-Man-%E5%BD%93%E6%88%91%E4%BB%ACnew%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E5%89%8D%E9%9D%A2%E6%98%AF%E7%88%B6%E7%B1%BB%EF%BC%8C%E5%90%8E%E9%9D%A2%E5%8F%AF%E4%BB%A5%E6%98%AF%E5%AD%90%E7%B1%BB%E3%80%82"><span class="toc-number">2.4.3.</span> <span class="toc-text">多态性：对象的多态性：父类的引用指向子类型的对象(Person p&#x3D;new Man();)当我们new对象的时候，前面是父类，后面可以是子类。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB%EF%BC%9A%E9%9A%8F%E7%9D%80%E7%BB%A7%E6%89%BF%E5%B1%82%E6%AC%A1%E4%B8%AD%E4%B8%80%E4%B8%AA%E4%B8%AA%E6%96%B0%E5%AD%90%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%8C%E5%AD%90%E7%B1%BB%E5%8F%98%E5%BE%97%E8%B6%8A%E6%9D%A5%E8%B6%8A%E5%85%B7%E4%BD%93%EF%BC%8C%E8%80%8C%E7%88%B6%E7%B1%BB%E5%88%99%E6%9B%B4%E4%B8%80%E8%88%AC%EF%BC%8C%E6%9B%B4%E9%80%9A%E7%94%A8%E3%80%82%E6%85%A2%E6%85%A2%E7%9A%84%E8%BF%99%E4%B8%AA%E7%B1%BB%E5%B0%B1%E4%B8%8D%E5%9C%A8%E7%94%A8%E6%9D%A5%E5%AE%9E%E4%BE%8B%E5%8C%96%E4%BA%86%E3%80%82"><span class="toc-number">2.5.</span> <span class="toc-text">抽象类：随着继承层次中一个个新子类的定义，子类变得越来越具体，而父类则更一般，更通用。慢慢的这个类就不在用来实例化了。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%EF%BC%9A"><span class="toc-number">2.6.</span> <span class="toc-text">接口：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%AF%B9%E6%AF%94%EF%BC%9A"><span class="toc-number">2.6.1.</span> <span class="toc-text">接口和抽象类的对比：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-number">2.7.</span> <span class="toc-text">多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%EF%BC%9A%E4%B8%80%E6%AE%B5%E9%9D%99%E6%80%81%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="toc-number">2.7.1.</span> <span class="toc-text">程序：一段静态的代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%EF%BC%9A%E6%AD%A3%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F%E3%80%82%E6%98%AF%E4%B8%80%E4%B8%AA%E5%8A%A8%E6%80%81%E7%9A%84%E8%BF%87%E7%A8%8B%E3%80%82"><span class="toc-number">2.7.2.</span> <span class="toc-text">进程：正在运行的一个程序。是一个动态的过程。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%EF%BC%9A%E8%BF%9B%E7%A8%8B%E5%8F%AF%E4%BB%A5%E8%BF%9B%E4%B8%80%E6%AD%A5%E7%BB%86%E5%88%86%E4%B8%BA%E7%BA%BF%E7%A8%8B%EF%BC%8C%E6%98%AF%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F%E5%86%85%E9%83%A8%E7%9A%84%E4%B8%80%E6%9D%A1%E6%89%A7%E8%A1%8C%E8%B7%AF%E5%BE%84%E3%80%82"><span class="toc-number">2.7.3.</span> <span class="toc-text">线程：进程可以进一步细分为线程，是一个程序内部的一条执行路径。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA%EF%BC%9A"><span class="toc-number">2.7.4.</span> <span class="toc-text">多线程的创建：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%9A"><span class="toc-number">2.7.5.</span> <span class="toc-text">线程的生命周期：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%EF%BC%9A"><span class="toc-number">2.8.</span> <span class="toc-text">类加载器：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE"><span class="toc-number">2.9.</span> <span class="toc-text">双亲委派:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="toc-number">2.10.</span> <span class="toc-text">String的使用：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO%E6%B5%81%EF%BC%9A"><span class="toc-number">2.11.</span> <span class="toc-text">IO流：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%B1%BB%EF%BC%9A"><span class="toc-number">2.11.1.</span> <span class="toc-text">分类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IO%E6%B5%81%E4%BD%93%E7%B3%BB%EF%BC%9A"><span class="toc-number">2.11.2.</span> <span class="toc-text">IO流体系：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE%EF%BC%9A"><span class="toc-number">2.12.</span> <span class="toc-text">网络通信协议：</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/05/json/" title="json">json</a><time datetime="2024-09-04T17:00:06.000Z" title="发表于 2024-09-05 01:00:06">2024-09-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/12/typescript/" title="typescript"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/66ba179dd9c307b7e950c8fa.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="typescript"/></a><div class="content"><a class="title" href="/2024/08/12/typescript/" title="typescript">typescript</a><time datetime="2024-08-12T14:06:37.000Z" title="发表于 2024-08-12 22:06:37">2024-08-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/02/mybatis-plus/" title="mybatis-plus"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/66ac93ddd9c307b7e92e12b4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="mybatis-plus"/></a><div class="content"><a class="title" href="/2024/08/02/mybatis-plus/" title="mybatis-plus">mybatis-plus</a><time datetime="2024-08-02T07:20:36.000Z" title="发表于 2024-08-02 15:20:36">2024-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/15/distributed-transactions/" title="分布式事务"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/66ba1590d9c307b7e94b0b73.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="分布式事务"/></a><div class="content"><a class="title" href="/2024/06/15/distributed-transactions/" title="分布式事务">分布式事务</a><time datetime="2024-06-14T16:23:58.000Z" title="发表于 2024-06-15 00:23:58">2024-06-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/28/docker/" title="docker"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/65de0dec9f345e8d0350d7a7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker"/></a><div class="content"><a class="title" href="/2024/02/28/docker/" title="docker">docker</a><time datetime="2024-02-27T16:23:58.000Z" title="发表于 2024-02-28 00:23:58">2024-02-28</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2026 By 温志浩</span></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/"><span>闽ICP备2023026471号</span></a> <br/> <a target="_blank" rel="noopener" href="https://beian.mps.gov.cn/#/query/webSearch?code=35021102002044"><img class="icp-icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/beian.png"><span>闽公网安备35021102002044</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'q9gPIMmDVYo9rODMbK7QdO2S-gzGzoHsz',
+      appKey: 'SBytn7Qb5KBEY7wsKYyosSv8',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><div class="aplayer no-destroy" data-id="8124757981" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" > </div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      false
+        ? pjax.loadUrl('/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start -->
+    <script src="/js/gallery.js" async></script>
+<!-- hexo injector body_end end --></body></html>
