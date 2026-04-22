@@ -13,7 +13,7 @@ email: 1921275125@qq.com
 
 # URL         ！！！！！！！！！！！！！部署需要修改的
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'   （在url后面加上/project会导致静态资源路径404）
-url: http://47.106.92.181
+url: https://PaceMak1.github.io/project
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -110,7 +110,7 @@ theme: butterfly
 
 deploy:
   - type: git
-    repository: https://github.com/PaceMak1/wenzhihao.git
+    repository: https://github.com/PaceMak1/pacemak1.git
     branch: master
   
   # 音乐播放器  
